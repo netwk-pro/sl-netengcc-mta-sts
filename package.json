@@ -1,0 +1,37 @@
+{
+  "name": "sl-netengcc-mta-sts",
+  "version": "1.0.0",
+  "description": "Deploys .well-known/mta-sts.txt file for sl.neteng.cc",
+  "keywords": [
+    "mta-sts",
+    "mta-sts-txt",
+    "mail",
+    "well-known"
+  ],
+  "homepage": "https://netwk.pro",
+  "bugs": {
+    "url": "https://github.com/netwk-pro/netwk-pro.github.io/issues/new/choose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netwk-pro/sl-netengcc-mta-sts.git"
+  },
+  "license": "CC-BY-4.0 OR GPL-3.0-or-later",
+  "author": {
+    "name": "Scott Lopez",
+    "email": "github@sl.neteng.cc",
+    "url": "https://bio.netwk.pro"
+  },
+  "type": "module",
+  "scripts": {
+    "lint:md": "npx markdownlint-cli2 \"**/*.{md,markdown}\" \"#node_modules/**\"",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "checkout": "npm run lint:md && npm run format"
+  },
+  "devDependencies": {
+    "markdownlint": "^0.39.0",
+    "markdownlint-cli2": "^0.18.1",
+    "prettier": "^3.6.2"
+  }
+}

@@ -1,0 +1,55 @@
+# .github/workflows/deploy-mta.yml
+#
+# Copyright © 2025 Network Pro Strategies
+# SPDX-License-Identifier: CC-BY-4.0 OR GPL-3.0-or-later
+# This file is part of Network Engineering Pro.
+
+name: Deploy MTA-STS policy
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare site directory
+        run: |
+          mkdir -p _site/.well-known
+          cp .well-known/mta-sts.txt _site/.well-known/
+          touch _site/.nojekyll
+
+      - name: Archive site manually
+        run: tar -cvf artifact.tar -C _site .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: artifact.tar
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
