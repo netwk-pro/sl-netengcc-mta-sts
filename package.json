@@ -1,6 +1,6 @@
 {
   "name": "sl-netengcc-mta-sts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Deploys .well-known/mta-sts.txt file for sl.neteng.cc",
   "keywords": [
     "mta-sts",
@@ -30,8 +30,8 @@
     "checkout": "npm run lint:md && npm run format"
   },
   "devDependencies": {
-    "markdownlint": "^0.39.0",
-    "markdownlint-cli2": "^0.18.1",
-    "prettier": "^3.6.2"
+    "markdownlint": "^0.40.0",
+    "markdownlint-cli2": "^0.20.0",
+    "prettier": "^3.7.4"
   }
 }
